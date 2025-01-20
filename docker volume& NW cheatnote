@@ -1,0 +1,57 @@
+## Docker Volume Commands
+  
+# Creates a named volume 
+  -> docker volume create <volume_name>
+# Lists the available volumes
+  -> docker volume ls
+# Displays detailed information about a volume
+  -> docker volume inspect <volume_name>
+# Removes one or more volumes
+  -> docker volume rm <volume_name>
+# Removes all unused volumes
+  -> docker volume prune
+
+## Docker Network Commands
+
+ # Creating an Overlay Network 
+   -> docker network create -d overlay <Network_name>
+ # Creating a Bridge Networrk 
+   -> docker network create -d bridge <Network_name>
+# Removing a Network
+  -> docker network rm <Network_name>
+# Listing Networks
+  -> docker network ls
+# Getting Information About a Network  
+  -> docker network inspect <Network_name>
+# Connecting a Running Container to a Network
+  -> docker network connect <Network_name> <container_name>
+# Connecting a Container to a Network When it Starts
+  -> docker container run -it -d –network=<Network_name> <container_name>
+#  Disconnecting a Container from a Network
+  -> docker network disconnect <Network_name> <container_name>
+  
+ # Creating a Customized Overlay Network 
+  Ex:
+docker network create -d overlay \
+
+–subnet=192.168.0.0/16 \
+
+–subnet=192.170.0.0/16 \
+
+–gateway=192.168.0.100 \
+
+–gateway=192.170.0.100 \
+
+–ip-range=192.168.1.0/24 \
+
+–aux-address=”my-router=192.168.1.5″
+
+–aux-address=”my-switch=192.168.1.6″ \
+
+–aux-address=”my-printer=192.170.1.5″
+
+–aux-address=”my-nas=192.170.1.6″ \ MyOverlayNetwork
+
+
+  
+  
