@@ -10,3 +10,10 @@
  -> docker rmi <image_name>
 #Remove all unused images
  -> docker image prune
+# Build docker image with file name
+ -> docker build -t <image_name> -f <filepath><filename> .
+  ex: docker build -t alpha:v1 -f /opt/alpha.Dockerfile .
+
+### Docker Container
+
+
