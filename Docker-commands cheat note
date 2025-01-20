@@ -18,9 +18,14 @@
   -> docker search <image_name>
 # Pull an image from a Docker Hub
   -> docker pull <image_name>
+# Showing the History of an Image
+  -> docker image history <image_name>
+# Creating an Image From a Container
+  -> docker container commit <image_name>
 # Build docker image with file name
  -> docker build -t <image_name> -f <filepath><filename> .
   ex: docker build -t alpha:v1 -f /opt/alpha.Dockerfile .
+
 
 ### Docker Container
 # Create and run a container from an image, with a custom name:
@@ -30,9 +35,25 @@
 # Run a container in the background
   -> docker run -d <image_name>
 # Start or stop an existing container:
-  -> docker start|stop <container_name> (or <container-id>)
+  -> docker start|stop|restart <container_name> (or <container-id>)
 # Remove a stopped container:
-  -> docker rm <container_name>
+  -> docker rm <container_name/id>
+# Pausing Containers
+  -> docker container pause <container_name/id>
+# Unpausing Containers
+  -> docker container unpause <container_name/id>
+# Blocking a Container
+  -> docker container wait <container_name/id>
+# Sending SIGKILL Containers
+  -> docker container kill <container_name/id>
+# Sending another signal
+  -> docker container kill -s HUP <container_name/id>
+# Connecting to an Existing Container
+  -> docker container attach <container_name/id>
+# Inspecting Containers for certain
+  -> docker container inspect –format ‘{{ .NetworkSettings.IPAddress }}’ $(docker ps -q)
+# Inspecting changes to files or directories on a container’s filesystem
+  -> docker container diff <container_name/id>
 # Open a shell inside a running container:
   -> docker exec -it <container_name> sh
 # Fetch and follow the logs of a container:
@@ -41,9 +62,21 @@
    -> docker inspect <container_name> (or <container_id>)
 # To list currently running containers:
    -> docker ps
+# View resource usage stats
+   -> docker container stats <container_name>
+# Running Processes
+  -> docker container top 
 #List all docker containers (running and stopped):
    -> docker ps --all
 ex : docker run -d -p 8090:8090 --name alpha alpha:v1
+docker run -d \
+  --name <container_name> \
+  -v <host_path>:<container_path> \
+  -p <host_port>:<container_port> \
+  --network <network_name> \
+  -e <ENV_VAR_NAME>=<value> \
+  <image_name>
+
 
 
 
